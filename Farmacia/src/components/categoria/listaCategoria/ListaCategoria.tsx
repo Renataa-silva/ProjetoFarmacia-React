@@ -1,21 +1,24 @@
-import { useEffect, useState } from 'react';
-import { Dna } from 'react-loader-spinner';
-import { useNavigate } from 'react-router-dom';
-import { buscar } from '../../../services/Service';
-import Categoria from '../../../models/Categoria';
-import CardCategoria from '../cardCategoria/CardCategoria';
+import { useEffect, useState } from "react";
+import CardCategoria from "../cardCategoria/CardCategoria";
+import Categoria from "../../../models/Categoria";
+import { buscar } from "../../../services/Service";
+import { DNA } from "react-loader-spinner";
+
+
 
 function ListaCategoria() {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-  const navigate = useNavigate();
-
   async function buscarCategorias() {
+    try {
 
-      await buscar('/categorias', setCategorias, {
-        headers: "",
-      });
-  }
+        await buscar('/categorias', setCategorias)
+
+    } catch (error: any) {
+        alert("Erro ao buscar Categorias")
+        console.log(error);
+    }
+}
 
   useEffect(() => {
     buscarCategorias();
@@ -23,7 +26,7 @@ function ListaCategoria() {
   return (
     <>
       {categorias.length === 0 && (
-        <Dna
+        <DNA
           visible={true}
           height="200"
           width="200"

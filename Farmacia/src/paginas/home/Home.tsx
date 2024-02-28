@@ -1,4 +1,5 @@
-import homeLogo from '../../assets/img/3d Drug Health Tablet -7.jpg'
+import homeLogo from '../../assets/img/transferir.png'
+import ListaCategoria from '../../components/categoria/listaCategoria/ListaCategoria';
 
 function Home() {
     return (
@@ -21,7 +22,7 @@ function Home() {
             </div>
           </div>
         </div>
-        
+        <ListaCategoria/>  
       </>
     );
 }
